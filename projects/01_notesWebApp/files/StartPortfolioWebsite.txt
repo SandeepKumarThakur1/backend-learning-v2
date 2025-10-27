@@ -1,0 +1,1 @@
+Use React + Tailwind. Add sections for skills, projects, and contact.

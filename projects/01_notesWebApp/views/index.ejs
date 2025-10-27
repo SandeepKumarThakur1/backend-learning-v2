@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes Web App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-900 text-gray-200">
+
+    <header class="bg-gray-800 text-white py-4 px-8 shadow-md">
+        <h1 class="text-3xl  text-center font-bold">Notes Web App</h1>
+    </header>
+
+    <main class="max-w-[80%] mx-auto py-5 px-4">
+
+
+
+        <h1 class="text-2xl font-bold pb-5">Add Tasks...</h1>
+        <form class="flex flex-col gap-3" action="/create" method="post">
+            <input type="text" placeholder="Title goes here..."
+                class="w-full px-4 py-3 rounded-md bg-gray-800 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500" name="title">
+
+            <textarea placeholder="Write your note here..." rows="2"
+                class="w-full px-4 py-3 rounded-md bg-gray-800 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500" name="details"></textarea>
+
+            <input type="submit" value="Create Task"
+                class="cursor-pointer bg-green-600 text-white font-semibold py-2 px-6 rounded-md hover:bg-green-700 transition-all duration-200 max-w-[200px]">
+        </form>
+
+        <div class="mt-8">
+            <h2 class="text-2xl font-semibold text-gray-100 mb-4">Your Notes</h2>
+            <div class="flex gap-2 items-center flex-wrap">
+            <% if(files.length > 0) { %>
+                <% files.forEach(function(val){ %>
+                    <div class="bg-gray-700 py-3 px-5 rounded-[5px] shadow-md border border-gray-600">
+                        <h3 class="text-xl font-semibold text-green-400 pb-2"><%= val  %></h3>
+                        <a href="#" class="text-blue-300 mt-2">Read More</a>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <h3 class="text-zinc-600">no task yet.</h3>
+            <% } %>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

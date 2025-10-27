@@ -1,0 +1,1 @@
+Issue with sticky navbar in mobile view. Debug z-index and position in CSS.

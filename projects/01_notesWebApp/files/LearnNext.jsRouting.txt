@@ -1,0 +1,1 @@
+Explore dynamic routes and getServerSideProps in Next.js.
