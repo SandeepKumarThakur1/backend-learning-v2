@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes Web App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-900 text-gray-200">
+    <main class="max-w-[80%] mx-auto py-20 px-4">
+        <a href="/" class="text-blue-500 font-[500] text-[20px]">Go Back To Home</a>
+        <form class="flex flex-col gap-3 pt-10" action="/edit" method="post">
+            <input type="text" placeholder="Previous Name ..."
+                class="w-full px-4 py-3 rounded-md bg-gray-800 border border-gray-600 text-zinc-400 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                name="previous" value="<%= filename %>" readonly>
+
+            <input type="text" placeholder="New Name ..."
+                class="w-full px-4 py-3 rounded-md bg-gray-800 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                name="new">
+
+            <input type="submit" value="Update Name"
+                class="cursor-pointer bg-yellow-600 text-white font-semibold py-2 px-6 rounded-md hover:bg-yellow-700 transition-all duration-200 max-w-[150px]">
+        </form>
+    </main>
+</body>
+
+</html>

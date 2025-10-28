@@ -27,6 +27,17 @@ app.get("/file/:filename", function(req,res){
     res.render("show", {filename: req.params.filename , filedata: filedata})
   })
 })
+
+app.get("/edit/:filename", function(req,res){
+  res.render('edit', {filename: req.params.filename})
+})
+
+app.post("/edit", function(req,res){
+  // console.log(req.body)
+  fs.rename(`./files/${req.body.previous}`, `./files/${req.body.new}`, function(err){
+    res.redirect("/")
+  })
+})
  
 app.listen(3000, function () {
   console.log("app is proper working mode !");
