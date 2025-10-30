@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Page</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+
+    <main class="">
+        <nav class="mb-2 flex items-center justify-between">
+            <h1 class="text-3xl font-bold">ALL USERS</h1>
+            <div class="">
+                <a href="/" class="text-orange-500 text-[18px]">Go Back To Home</a>
+            </div>
+        </nav>
+        <div class="py-4 flex gap-4 flex-wrap items-start justify-between">
+            <% if(users.length > 0) { %>
+                <% users.forEach(function(user){ %>
+                    <div class="w-[335px] rounded overflow-hidden bg-white p-5">
+                        <img src="<%= user.image %>" alt=""
+                            class="h-[300px] overflow-hidden rounded object-cover bg-black w-[100%] object-top">
+                        <div class="flex items-center pt-2 gap-2">
+                            <h1 class="text-black text-[22px] font-[600]">
+                                <%= user.name %>
+                            </h1>
+                            <img src="https://imgs.search.brave.com/k3hX8ztTmkGx0-dfGNG05nJWQ7KjU_VurABRUYnKgXI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMjIx/MDc0MDUzOS92ZWN0/b3IvYmx1ZS12ZXJp/ZmllZC10aWNrLW9y/LXZhbGlkLXNlYWwt/dmVjdG9yLWljb24t/aW4tZmxhdC1zdHls/ZS1kZXNpZ24tZm9y/LXdlYnNpdGUtZGVz/aWduLWFwcC11aS5q/cGc_cz02MTJ4NjEy/Jnc9MCZrPTIwJmM9/TXN2VnBzUEhKLUdY/eDBmZk03YXJvc21B/a2htYnIxaDRDVGcy/cE9ERF85WT0"
+                                alt="" class="w-5 h-5 mt-2">
+                        </div>
+                        <h3 class="text-zinc-700 text-[15px] text-xl pb-3">
+                            <%= user.email %>
+                        </h3>
+                        <hr class="text-zinc-200">
+                        <p class="text-zinc-700 text-[16px] pt-2 overflow-hidden line-clamp-3 transition-all duration-300"
+                            id="para-<%= user._id %>">
+                            <%= user.para %>
+                        </p>
+                        <button class=" cursor-pointer text-green-600 font-[500] text-sm mt-1"
+                            onclick="toggleText('<%= user._id %>')">
+                            Read More
+                        </button>
+                        <div class="flex justify-start gap-4 pt-5">
+                            <a href="/edit/<%= user._id %>" class="text-zinc-500 font-bold">Edit User</a>
+                            <a href="/delete/<%= user._id %>" class="text-red-500 font-bold">Delete User</a>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <h3>No User Found ...</h3>
+            <% } %>
+        </div>
+    </main>
+
+</body>
+
+<script>
+    function toggleText(id) {
+        const para = document.getElementById('para-' + id);
+        const btn = event.target;
+        if (para.classList.contains('line-clamp-3')) {
+            para.classList.remove('line-clamp-3');
+            btn.textContent = 'Show less';
+        } else {
+            para.classList.add('line-clamp-3');
+            btn.textContent = 'Show more';
+        }
+    }
+</script>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+
+    <main class="">
+        <nav class="mb-2 flex items-center justify-between">
+            <h1 class="text-3xl font-bold">CREATE USER</h1>
+            <div class="">
+                <a href="/read" class="text-orange-500 text-[18px]">View All Users</a>
+            </div>
+        </nav>
+
+        <form action="/create" method="post" class="py-5 flex gap-3 items-center">
+            <input type="text" placeholder="Enter Name ...." name="name" class="border py-2 px-4 rounded text-white" required>
+            <input type="email" placeholder="Enter Email ID ...." name="email"
+                class="border py-2 px-4 rounded text-white" required>
+            <input type="text" placeholder="Enter Image URL ...." name="image"
+                class="border py-2 px-4 rounded text-white" required>
+            <input type="text" placeholder="Enter User Details  ...." name="para"
+                class="border py-2 px-4 rounded text-white" required>
+            <input type="submit" value="Create User"
+                class="bg-green-700 border border-green-700 cursor-pointer font-bold hover:bg-green-500 py-2 px-6 rounded text-white">
+        </form>
+    </main>
+
+</body>
+
+</html>
