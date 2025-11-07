@@ -18,6 +18,11 @@ app.get("/", function (req, res) {
   res.render("index");
 });
 
+app.get("/profile", isLoggedIn, function (req, res) {
+  console.log(req.user);
+  res.send("This is Profile Page");
+});
+
 app.post("/register", async function (req, res) {
   let { username, name, email, age, password } = req.body;
 
@@ -58,14 +63,26 @@ app.post("/login", async function (req, res) {
   if (!user) return res.status(500), res.send("User are not found !");
 
   bcrypt.compare(password, user.password, function (err, result) {
-    if (result) return res.send("You are logined now.");
-    else res.redirect("/");
+    if (result) {
+      let token = jwt.sign({ email: email, userid: user._id }, "Shhhh");
+      res.cookie("token", token);
+      res.send("You are logined now.");
+    } else res.redirect("/");
   });
 });
 
 app.get("/logout", function (req, res) {
   res.cookie("token", "");
-  res.send("You Logout Now!");
+  res.redirect("/");
 });
 
-app.listen(3000);
+function isLoggedIn(req, res, next) {
+  if (req.cookies.token === "") return res.send("You must be logged In");
+  else {
+    let data = jwt.verify(req.cookies.token, "Shhhh");
+    req.user = data;
+  }
+  next();
+}
+
+app.listen(3000); 
